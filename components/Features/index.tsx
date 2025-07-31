@@ -24,7 +24,7 @@ const ShowcaseSection = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="max-h-[900px] overflow-hidden pb-12 md:px-[3%] bg-background w-screen max-w-full">
+    <div className="max-h-[900px] border border-y-primary overflow-hidden pb-12 md:px-[3%] bg-black w-screen max-w-full">
       <div className="xl:text-[0.7vw] pt-[6.4em] md:pb-[1.6em] text-xs w-full lg:max-w-[128rem] mx-auto">
         <div className="text-muted-foreground px-4 text-start md:text-center mb-[2.8em]">
           <div className="uppercase text-base font-medium leading-[1.2]">

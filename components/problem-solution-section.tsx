@@ -60,7 +60,7 @@ export function ProblemSolutionSection() {
   return (
     <section
       ref={sectionRef}
-      className="snap-start h-screen bg-white flex items-center dark:bg-black overflow-visible pt-16"
+      className="snap-start h-screen border border-y-primary bg-white flex items-center dark:bg-black overflow-visible pt-16"
     >
       <div className="fade-in container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

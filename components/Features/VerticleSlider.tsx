@@ -1,3 +1,4 @@
+// @ts-ignore
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Virtual, Autoplay, EffectFade } from "swiper";

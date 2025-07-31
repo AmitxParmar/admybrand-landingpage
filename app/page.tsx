@@ -41,7 +41,6 @@ export default function Home() {
         <HeroSection />
         <ProblemSolutionSection />
         <ShowcaseSection />
-
         <TestimonialsSection />
         <DemoSection />
         <PricingSection />
