@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import { Star, Quote } from "lucide-react"
+import { Star, Quote } from "lucide-react";
+import { Marquee } from "./magicui/marquee";
 
 const testimonials = [
   {
@@ -8,7 +9,8 @@ const testimonials = [
     company: "TechFlow Commerce",
     role: "Marketing Director",
     image: "/placeholder.svg?height=60&width=60",
-    quote: "ADmyBRAND reduced our CPA by 60% in just 30 days. The AI insights are incredibly accurate and actionable.",
+    quote:
+      "ADmyBRAND reduced our CPA by 60% in just 30 days. The AI insights are incredibly accurate and actionable.",
     rating: 5,
     industry: "eCommerce",
   },
@@ -42,11 +44,11 @@ const testimonials = [
     rating: 5,
     industry: "Local Business",
   },
-]
+];
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-950">
+    <section className="snap-start py-24 bg-gray-50 dark:bg-gray-950 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -56,48 +58,135 @@ export function TestimonialsSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Join thousands of marketers who've transformed their campaigns with AI-powered automation.
+            Join thousands of marketers who've transformed their campaigns with
+            AI-powered automation.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 relative"
-            >
-              <Quote className="absolute top-6 right-6 w-8 h-8 text-gray-300 dark:text-gray-600" />
+        {/* Fix: Only one Marquee, map testimonials inside it, and set repeat to 2+ for smooth loop */}
+        <div className="relative w-full flex items-center justify-center overflow-hidden">
+          <Marquee className="[--duration:20s]" repeat={2} pauseOnHover>
+            {testimonials.map((testimonial, index) => (
+              <>
+                <div
+                  key={index}
+                  className="bg-white max-w-md dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 relative mx-4"
+                >
+                  <Quote className="absolute top-6 right-6 w-8 h-8 text-gray-300 dark:text-gray-600" />
 
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-
-              <blockquote className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-                "{testimonial.quote}"
-              </blockquote>
-
-              <div className="flex items-center">
-                <img
-                  src={testimonial.image || "/placeholder.svg"}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full mr-4"
-                />
-                <div>
-                  <div className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {testimonial.role} at {testimonial.company}
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                      />
+                    ))}
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
-                    {testimonial.industry}
+
+                  <blockquote className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  <div className="flex items-center">
+                    <img
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full mr-4"
+                    />
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        {testimonial.role} at {testimonial.company}
+                      </div>
+                      <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+                        {testimonial.industry}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+                <div
+                  key={index}
+                  className="bg-white max-w-md dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 relative mx-4"
+                >
+                  <Quote className="absolute top-6 right-6 w-8 h-8 text-gray-300 dark:text-gray-600" />
+
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                      />
+                    ))}
+                  </div>
+
+                  <blockquote className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  <div className="flex items-center">
+                    <img
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full mr-4"
+                    />
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        {testimonial.role} at {testimonial.company}
+                      </div>
+                      <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+                        {testimonial.industry}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  key={index}
+                  className="bg-white max-w-md dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 relative mx-4"
+                >
+                  <Quote className="absolute top-6 right-6 w-8 h-8 text-gray-300 dark:text-gray-600" />
+
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                      />
+                    ))}
+                  </div>
+
+                  <blockquote className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  <div className="flex items-center">
+                    <img
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full mr-4"
+                    />
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        {testimonial.role} at {testimonial.company}
+                      </div>
+                      <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+                        {testimonial.industry}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Play, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { Play, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function DemoSection() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   return (
-    <section className="py-24 bg-white dark:bg-black">
+    <section className="snap-start py-24 bg-white dark:bg-black pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -18,7 +18,8 @@ export function DemoSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Watch how ADmyBRAND AI Suite transforms your marketing workflow from setup to optimization.
+            Watch how ADmyBRAND AI Suite transforms your marketing workflow from
+            setup to optimization.
           </p>
         </div>
 
@@ -43,7 +44,9 @@ export function DemoSection() {
                 <div className="text-center text-white">
                   <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
                   <p className="text-lg">Demo video would play here</p>
-                  <p className="text-sm opacity-75 mt-2">Integration with actual video player needed</p>
+                  <p className="text-sm opacity-75 mt-2">
+                    Integration with actual video player needed
+                  </p>
                 </div>
               </div>
             )}
@@ -62,5 +65,5 @@ export function DemoSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

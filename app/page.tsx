@@ -2,7 +2,6 @@
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { ProblemSolutionSection } from "@/components/problem-solution-section";
-import { FeaturesSection } from "@/components/features-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { DemoSection } from "@/components/demo-section";
 import { PricingSection } from "@/components/pricing-section";
@@ -14,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import ShowcaseSection from "@/components/Features";
 
 export default function Home() {
   const wrapper = useRef(null);
@@ -27,7 +27,7 @@ export default function Home() {
       ScrollSmoother.create({
         wrapper: wrapper.current,
         content: "#smooth-content",
-        smooth: 4, // Adjust the smoothness of the scroll
+        smooth: 2, // Adjust the smoothness of the scroll
         effects: true, // Enable scroll effects
       });
     },
@@ -35,12 +35,13 @@ export default function Home() {
   );
 
   return (
-    <div ref={wrapper} className="min-h-screen">
-      <div id="smooth-content">
+    <div ref={wrapper} className="h-screen overflow-y-scroll">
+      <div id="smooth-content" className="snap-y snap-mandatory scroll-smooth">
         <Header />
         <HeroSection />
         <ProblemSolutionSection />
-        <FeaturesSection />
+        <ShowcaseSection />
+
         <TestimonialsSection />
         <DemoSection />
         <PricingSection />

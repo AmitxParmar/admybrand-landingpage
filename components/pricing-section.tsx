@@ -1,14 +1,15 @@
-"use client"
+"use client";
 
-import { Check, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Check, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const plans = [
   {
     name: "Starter",
     price: "$99",
     period: "/month",
-    description: "Perfect for small businesses getting started with AI marketing",
+    description:
+      "Perfect for small businesses getting started with AI marketing",
     features: [
       "Basic automation for 3 accounts",
       "Limited AI usage (1000 optimizations/month)",
@@ -16,7 +17,11 @@ const plans = [
       "Email support",
       "Basic analytics dashboard",
     ],
-    notIncluded: ["Advanced AI features", "Custom integrations", "Priority support"],
+    notIncluded: [
+      "Advanced AI features",
+      "Custom integrations",
+      "Priority support",
+    ],
     popular: false,
   },
   {
@@ -55,11 +60,14 @@ const plans = [
     notIncluded: [],
     popular: false,
   },
-]
+];
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-24 bg-gray-50 dark:bg-gray-950">
+    <section
+      id="pricing"
+      className="snap-start py-24 bg-gray-50 dark:bg-gray-950 pt-16"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -69,8 +77,8 @@ export function PricingSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Choose the perfect plan for your business. All plans include our core AI features and free trial with no
-            credit card required.
+            Choose the perfect plan for your business. All plans include our
+            core AI features and free trial with no credit card required.
           </p>
         </div>
 
@@ -93,25 +101,40 @@ export function PricingSection() {
               )}
 
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  {plan.name}
+                </h3>
                 <div className="mb-4">
-                  <span className="text-4xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
-                  <span className="text-gray-600 dark:text-gray-300">{plan.period}</span>
+                  <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                    {plan.price}
+                  </span>
+                  <span className="text-gray-600 dark:text-gray-300">
+                    {plan.period}
+                  </span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">{plan.description}</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {plan.description}
+                </p>
               </div>
 
               <div className="space-y-4 mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center">
                     <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {feature}
+                    </span>
                   </div>
                 ))}
                 {plan.notIncluded.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center opacity-50">
+                  <div
+                    key={featureIndex}
+                    className="flex items-center opacity-50"
+                  >
                     <X className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" />
-                    <span className="text-gray-500 dark:text-gray-500">{feature}</span>
+                    <span className="text-gray-500 dark:text-gray-500">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -130,5 +153,5 @@ export function PricingSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

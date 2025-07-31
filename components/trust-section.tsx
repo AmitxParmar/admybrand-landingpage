@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Shield, Users, Zap, Award } from "lucide-react"
+import { Shield, Users, Zap, Award } from "lucide-react";
 
 const trustItems = [
   {
@@ -11,23 +11,25 @@ const trustItems = [
   {
     icon: Users,
     title: "24/7 Human Support",
-    description: "Real experts, no bots, no delays - always here when you need us",
+    description:
+      "Real experts, no bots, no delays - always here when you need us",
   },
   {
     icon: Zap,
     title: "Transparent AI",
-    description: "Built on GPT-4 with custom fine-tuning for marketing excellence",
+    description:
+      "Built on GPT-4 with custom fine-tuning for marketing excellence",
   },
   {
     icon: Award,
     title: "Proven Results",
     description: "10,000+ successful campaigns with 95% customer satisfaction",
   },
-]
+];
 
 export function TrustSection() {
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-950">
+    <section className="snap-start py-24 bg-gray-50 dark:bg-gray-950 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -37,8 +39,8 @@ export function TrustSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Your success is our mission. Here's why thousands of marketers trust ADmyBRAND with their most important
-            campaigns.
+            Your success is our mission. Here's why thousands of marketers trust
+            ADmyBRAND with their most important campaigns.
           </p>
         </div>
 
@@ -51,8 +53,12 @@ export function TrustSection() {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <item.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -78,5 +84,5 @@ export function TrustSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

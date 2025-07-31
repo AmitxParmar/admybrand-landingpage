@@ -2,6 +2,7 @@
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import { useEffect, useRef, memo } from "react";
 
+// Only dark mode config, always transparent black background, never white
 const vertexShader = `
 attribute vec2 uv;
 attribute vec2 position;
@@ -186,7 +187,7 @@ interface GalaxyProps {
   rotationSpeed?: number;
   repulsionStrength?: number;
   autoCenterRepulsion?: number;
-  transparent?: boolean;
+  // transparent?: boolean; // Always dark mode, always transparent
 }
 
 export default memo(function Galaxy({
@@ -205,7 +206,7 @@ export default memo(function Galaxy({
   twinkleIntensity = 0.3,
   rotationSpeed = 0.1,
   autoCenterRepulsion = 0,
-  transparent = true,
+  // transparent = true, // Always dark mode, always transparent
   ...rest
 }: GalaxyProps & React.HTMLAttributes<HTMLDivElement>) {
   const ctnDom = useRef<HTMLDivElement>(null);
@@ -217,19 +218,17 @@ export default memo(function Galaxy({
   useEffect(() => {
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
+    // Always use dark mode config: transparent, black background, never white
     const renderer = new Renderer({
-      alpha: transparent,
+      alpha: true,
       premultipliedAlpha: false,
     });
     const gl = renderer.gl;
 
-    if (transparent) {
-      gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-      gl.clearColor(0, 0, 0, 0);
-    } else {
-      gl.clearColor(0, 0, 0, 1);
-    }
+    // Force black transparent background, never white, regardless of system or parent theme
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
 
     let program: Program;
 
@@ -280,7 +279,7 @@ export default memo(function Galaxy({
         uRepulsionStrength: { value: repulsionStrength },
         uMouseActiveFactor: { value: 0.0 },
         uAutoCenterRepulsion: { value: autoCenterRepulsion },
-        uTransparent: { value: transparent },
+        uTransparent: { value: true }, // Always true for dark mode
       },
     });
 
@@ -355,8 +354,16 @@ export default memo(function Galaxy({
     rotationSpeed,
     repulsionStrength,
     autoCenterRepulsion,
-    transparent,
+    // No transparent in deps, always dark mode
   ]);
 
-  return <div ref={ctnDom} className="w-full h-full relative" {...rest} />;
+  // Always force a dark background on the container to prevent white showing through
+  return (
+    <div
+      ref={ctnDom}
+      className="w-full h-full relative"
+      style={{ background: "rgba(0,0,0,1)" }}
+      {...rest}
+    />
+  );
 });

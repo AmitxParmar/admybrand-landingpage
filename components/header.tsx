@@ -4,17 +4,16 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import GlassSurface from "./animated-ui/Components/GlassSurface/GlassSurface";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <GlassSurface className="z-50 bg-transparent w-screen">
-      <div className="absolute mx-auto px-4 sm:px-6 lg:px-8">
+    <div className=" z-50  bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center px-8">
             <div className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               ADmyBRAND
             </div>
@@ -107,6 +106,6 @@ export function Header() {
           </div>
         )}
       </div>
-    </GlassSurface>
+    </div>
   );
 }

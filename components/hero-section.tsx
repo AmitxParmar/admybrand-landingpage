@@ -38,14 +38,14 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative snap-start z-0 min-h-screen flex items-center justify-center overflow-hidden "
     >
       {/* Galaxy Background */}
 
       <Galaxy
-        className="absolute h-screen w-screen"
-        mouseRepulsion={true}
-        mouseInteraction={true}
+        className="fixed h-screen w-screen"
+        mouseRepulsion={false}
+        mouseInteraction={false}
         density={1.5}
         glowIntensity={0.5}
         saturation={0.8}

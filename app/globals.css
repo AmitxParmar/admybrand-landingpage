@@ -57,23 +57,42 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .theme {
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  }
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  /* Ensure proper scroll behavior */
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  /* Fix for sticky header */
+  body {
+    padding-top: 0;
   }
 }
 
 /* Custom animations */
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -83,11 +102,6 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Custom gradient backgrounds */
 .gradient-bg {
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -95,4 +109,23 @@ html {
 
 .dark .gradient-bg {
   background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+}
+
+@theme inline {
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
 }
