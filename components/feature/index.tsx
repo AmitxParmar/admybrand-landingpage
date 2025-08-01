@@ -1,7 +1,7 @@
 "use client";
 import VerticleSlider from "./VerticleSlider";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Marquee } from "../magicui/marquee";
+import Marquee from "react-fast-marquee";
 import Link from "next/link";
 
 // Short, punchy feature phrases for the marquee

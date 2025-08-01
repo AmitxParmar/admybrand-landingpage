@@ -13,7 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import ShowcaseSection from "@/components/Features";
+import ShowcaseSection from "@/components/feature";
 
 export default function Home() {
   const wrapper = useRef(null);

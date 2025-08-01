@@ -1,7 +1,6 @@
 "use client";
-
 import { Star, Quote } from "lucide-react";
-import { Marquee } from "./magicui/marquee";
+import Marquee from "react-fast-marquee";
 
 const testimonials = [
   {
@@ -105,7 +104,7 @@ export function TestimonialsSection() {
 
         {/* Fix: Only one Marquee, map testimonials inside it, and set repeat to 2+ for smooth loop */}
         <div className="relative h-full w-full ">
-          <Marquee className=" ">
+          <Marquee>
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
