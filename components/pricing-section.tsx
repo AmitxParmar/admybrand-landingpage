@@ -1,10 +1,36 @@
 "use client";
-
+import { useRef } from "react";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { plans } from "@/lib/constants";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export function PricingSection() {
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!cardsRef.current) return;
+      const cards = gsap.utils.toArray<HTMLElement>(
+        cardsRef.current.querySelectorAll(".pricing-card")
+      );
+      gsap.from(cards, {
+        x: -800,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    },
+    { scope: cardsRef }
+  );
+
   return (
     <section
       id="pricing"
@@ -24,11 +50,14 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          ref={cardsRef}
+        >
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative p-8 rounded-2xl border-2 transition-all duration-300 hover:shadow-lg ${
+              className={`pricing-card relative p-8 rounded-2xl border-2 transition-all duration-300 hover:shadow-lg ${
                 plan.popular
                   ? "border-gray-900 dark:border-white bg-white dark:bg-black shadow-lg scale-105"
                   : "border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-gray-300 dark:hover:border-gray-700"

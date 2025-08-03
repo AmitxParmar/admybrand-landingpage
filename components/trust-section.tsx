@@ -1,9 +1,37 @@
 "use client";
 import { trustItems } from "@/lib/constants";
 import { Shield, Award } from "lucide-react";
-import { memo } from "react";
+import { memo, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function TrustSection() {
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!cardsRef.current) return;
+      const cards = gsap.utils.toArray<HTMLElement>(
+        cardsRef.current.querySelectorAll(".trust-card")
+      );
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 100,
+          duration: 1,
+          delay: (i + 1) * 2, // index-based delay: 0.15, 0.3, 0.45, 0.6
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 100%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    },
+    { scope: cardsRef }
+  );
+
   return (
     <section className="snap-start border border-b-primary py-24 bg-gray-50 dark:bg-gray-950 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,11 +48,14 @@ function TrustSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+          ref={cardsRef}
+        >
           {trustItems.map((item, index) => (
             <div
               key={index}
-              className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800"
+              className="trust-card text-center p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <item.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
