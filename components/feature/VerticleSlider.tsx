@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Virtual, Autoplay, EffectFade } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
-import "./swiper.css";
 
 const items = [
   "AI-Powered Automation",
@@ -48,7 +47,7 @@ const VerticleSlider = () => {
     >
       {items.map((item, index) => (
         <SwiperSlide className="" virtualIndex={index} key={index}>
-          {({ isActive, isNext /* isPrev */ }) => (
+          {({ isNext }) => (
             <span
               className={`transition-all whitespace-normal duration-500  leading-none text-6xl text-nowrap md:text-6xl lg:text-7xl z-10 opacity-25 ${
                 isNext && "!opacity-100 md:text-3xl lg:!text-[100px]"

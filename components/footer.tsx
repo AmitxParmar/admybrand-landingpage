@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Facebook,
   Twitter,
@@ -10,8 +9,49 @@ import {
   MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { memo, useCallback } from "react";
 
-export function Footer() {
+// Pre-defined link arrays to reduce inline JSX
+const productLinks = [
+  { href: "#", text: "Features" },
+  { href: "#", text: "Pricing" },
+  { href: "#", text: "Integrations" },
+  { href: "#", text: "API Documentation" },
+  { href: "#", text: "Changelog" },
+  { href: "#", text: "Roadmap" },
+];
+
+const companyLinks = [
+  { href: "#", text: "About Us" },
+  { href: "#", text: "Careers" },
+  { href: "#", text: "Blog" },
+  { href: "#", text: "Press" },
+  { href: "#", text: "Partners" },
+  { href: "#", text: "Contact" },
+];
+
+const supportLinks = [
+  { href: "#", text: "Help Center" },
+  { href: "#", text: "Community" },
+  { href: "#", text: "Status" },
+  { href: "#", text: "Privacy Policy" },
+  { href: "#", text: "Terms of Service" },
+  { href: "#", text: "Security" },
+];
+
+const socialLinks = [
+  { href: "#", icon: Facebook },
+  { href: "#", icon: Twitter },
+  { href: "#", icon: Linkedin },
+  { href: "#", icon: Instagram },
+];
+
+function Footer() {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+  }, []);
+
   return (
     <footer className="snap-start bg-gray-900 dark:bg-black text-white">
       {/* CTA Section */}
@@ -61,37 +101,25 @@ export function Footer() {
               ad platforms.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="lg:col-span-1">
             <h3 className="text-lg font-semibold mb-6">Get in Touch</h3>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <input
                   type="text"
@@ -130,54 +158,16 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Product</h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Integrations
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  API Documentation
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Changelog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Roadmap
-                </a>
-              </li>
+              {productLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -185,54 +175,16 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Press
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Partners
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
+              {companyLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -240,54 +192,16 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Support & Legal</h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Community
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Status
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Security
-                </a>
-              </li>
+              {supportLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
 
             {/* Contact Info */}
@@ -327,3 +241,4 @@ export function Footer() {
     </footer>
   );
 }
+export default memo(Footer);

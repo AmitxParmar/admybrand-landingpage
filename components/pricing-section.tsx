@@ -2,65 +2,7 @@
 
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const plans = [
-  {
-    name: "Starter",
-    price: "$99",
-    period: "/month",
-    description:
-      "Perfect for small businesses getting started with AI marketing",
-    features: [
-      "Basic automation for 3 accounts",
-      "Limited AI usage (1000 optimizations/month)",
-      "Standard integrations (Google, Meta)",
-      "Email support",
-      "Basic analytics dashboard",
-    ],
-    notIncluded: [
-      "Advanced AI features",
-      "Custom integrations",
-      "Priority support",
-    ],
-    popular: false,
-  },
-  {
-    name: "Pro",
-    price: "$299",
-    period: "/month",
-    description: "Ideal for growing businesses and agencies",
-    features: [
-      "Unlimited campaigns & accounts",
-      "Full AI automation suite",
-      "Advanced integrations (HubSpot, Salesforce)",
-      "Priority support",
-      "Advanced analytics & reporting",
-      "Team collaboration tools",
-      "API access",
-      "Custom AI model training",
-    ],
-    notIncluded: ["White-label solution", "Dedicated account manager"],
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "For large organizations with specific needs",
-    features: [
-      "Everything in Pro",
-      "White-label solution",
-      "Dedicated account manager",
-      "Custom integrations",
-      "SLA guarantee",
-      "Advanced security & compliance",
-      "Custom training & onboarding",
-      "Real-time coaching",
-    ],
-    notIncluded: [],
-    popular: false,
-  },
-];
+import { plans } from "@/lib/constants";
 
 export function PricingSection() {
   return (

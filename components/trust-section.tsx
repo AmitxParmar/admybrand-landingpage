@@ -1,33 +1,9 @@
 "use client";
+import { trustItems } from "@/lib/constants";
+import { Shield, Award } from "lucide-react";
+import { memo } from "react";
 
-import { Shield, Users, Zap, Award } from "lucide-react";
-
-const trustItems = [
-  {
-    icon: Shield,
-    title: "Enterprise Security",
-    description: "SOC 2 Type II, GDPR compliant with bank-level encryption",
-  },
-  {
-    icon: Users,
-    title: "24/7 Human Support",
-    description:
-      "Real experts, no bots, no delays - always here when you need us",
-  },
-  {
-    icon: Zap,
-    title: "Transparent AI",
-    description:
-      "Built on GPT-4 with custom fine-tuning for marketing excellence",
-  },
-  {
-    icon: Award,
-    title: "Proven Results",
-    description: "10,000+ successful campaigns with 95% customer satisfaction",
-  },
-];
-
-export function TrustSection() {
+function TrustSection() {
   return (
     <section className="snap-start border border-b-primary py-24 bg-gray-50 dark:bg-gray-950 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,3 +62,5 @@ export function TrustSection() {
     </section>
   );
 }
+
+export default memo(TrustSection);

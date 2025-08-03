@@ -41,7 +41,6 @@ export function HeroSection() {
       className="relative snap-start z-0 min-h-screen flex items-center justify-center overflow-hidden "
     >
       {/* Galaxy Background */}
-
       <Galaxy
         className="fixed h-screen w-screen"
         mouseRepulsion={false}

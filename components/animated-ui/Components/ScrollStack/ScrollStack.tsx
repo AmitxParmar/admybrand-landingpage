@@ -1,5 +1,6 @@
 import React, { ReactNode, useLayoutEffect, useRef, useCallback } from "react";
 import Lenis from "lenis";
+import { cn } from "@/lib/utils";
 
 export interface ScrollStackItemProps {
   itemClassName?: string;
@@ -11,11 +12,13 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
   itemClassName = "",
 }) => (
   <div
-    className={`scroll-stack-card relative w-full h-80 my-8 p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform ${itemClassName}`.trim()}
+    className={cn(
+      `scroll-stack-card relative w-full h-full mx-auto md:my-8 lg:p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform `,
+      itemClassName
+    )}
     style={{
       backfaceVisibility: "hidden",
       transformStyle: "preserve-3d",
-      overflowY: "auto", // Ensure nested elements can scroll
     }}
   >
     {children}
@@ -301,7 +304,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
   return (
     <div
-      className={`relative w-full h-full overflow-hidden overflow-x-visible ${className}`.trim()}
+      className={cn(
+        `relative w-full h-full overflow-hidden overflow-x-visible `,
+        className
+      )}
       ref={scrollerRef}
       style={{
         overscrollBehavior: "contain",
@@ -312,7 +318,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         willChange: "scroll-position",
       }}
     >
-      <div className="scroll-stack-inner md:px-20 w-fit mx-auto pb-[5rem]">
+      <div className="scroll-stack-inner">
         {children}
         {/* Spacer so the last pin can release cleanly */}
         <div className="scroll-stack-end w-full h-px" />

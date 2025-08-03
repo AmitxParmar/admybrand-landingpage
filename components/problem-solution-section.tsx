@@ -8,37 +8,10 @@ import { useGSAP } from "@gsap/react";
 import ScrollStack, {
   ScrollStackItem,
 } from "./animated-ui/Components/ScrollStack/ScrollStack";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const problems = [
-  {
-    problem: "Inaccurate or biased AI insights",
-    solution: "Robust data validation & adaptive learning system",
-  },
-  {
-    problem: "Content feels robotic or uninspired",
-    solution: "Human-AI collaborative copy generator",
-  },
-  {
-    problem: "Complex tool setup & integrations",
-    solution: "Plug-and-play integrations with Meta, Google, CRM",
-  },
-  {
-    problem: "Lack of creative consistency across platforms",
-    solution: "Brand-locked AI creative engine",
-  },
-  {
-    problem: "Frustrating support & platform bugs",
-    solution: "24/7 real expert support — no bots, no delays",
-  },
-  {
-    problem: "Hard to measure AI ROI",
-    solution: "Outcome-based reporting & predictive analytics",
-  },
-];
+import { problems } from "@/lib/constants";
 
 export function ProblemSolutionSection() {
+  gsap.registerPlugin(ScrollTrigger);
   const sectionRef = useRef(null);
 
   useGSAP(
@@ -60,9 +33,9 @@ export function ProblemSolutionSection() {
   return (
     <section
       ref={sectionRef}
-      className="snap-start h-screen border border-y-primary bg-white flex items-center dark:bg-black overflow-visible pt-16"
+      className="snap-start min-h-screen border border-y-primary bg-white flex items-center dark:bg-black overflow-visible pt-16"
     >
-      <div className="fade-in container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="fade-in container mx-auto px-0 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Built for the Modern Marketer's{" "}
@@ -71,40 +44,41 @@ export function ProblemSolutionSection() {
             </span>
           </h2>
         </div>
-        <div className="h-[600px] w-full relative">
+        <div className="w-full relative">
           {/* Blur backdrop for cards */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20 dark:from-black/20 dark:to-black/20 backdrop-blur-sm rounded-3xl -z-10"></div>
 
           <ScrollStack
-            itemStackDistance={8} // slightly more spacing for smoother visual separation
-            itemDistance={16} // reduce distance for a tighter, faster stack
-            stackPosition="10%" // start stacking a bit earlier for a more fluid effect
-            baseScale={0.9} // slightly less shrink for a smoother scale
-            blurAmount={8} // slightly less blur for clarity and smoothness
-            scaleDuration={4} // faster scale animation for snappier feel
-            className="max-h-[70vh] h-[50vh] flex flex-col"
+            itemStackDistance={8}
+            itemDistance={16}
+            stackPosition="10%"
+            baseScale={0.9}
+            blurAmount={8}
+            scaleDuration={0.2}
+            className="max-h-[70vh]"
           >
             {problems.map((item, index) => (
               <ScrollStackItem
-                itemClassName="
-                  mx-auto
-                  md:min-w-[800px]
+                itemClassName={`
+                  
+                  w-full
                   sm:w-[95%]
-                  md:w-[80%] md:max-w-xl
+                  md:w-[80%] md:max-w-xl md:min-w-[800px]
+                  mx-auto
                   rounded-3xl shadow-xl
                   bg-gradient-to-br from-white via-gray-50 to-orange-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900
                   border border-gray-200 dark:border-gray-800
-                  px-4 py-6
+                  px-2 py-4
                   sm:px-6 sm:py-8
                   md:px-8 md:py-10
                   flex flex-col md:flex-row items-center gap-6 md:gap-8
                   will-change-transform
                   transition-all duration-300
                   group
-                  min-h-[340px] sm:min-h-[380px] md:min-h-[320px] 
+                  min-h-[1px] sm:min-h-[380px] md:min-h-[320px]
                   box-border
                   overflow-visible
-                "
+                `}
                 key={index}
               >
                 {/* Left: Problem */}

@@ -5,15 +5,17 @@ import { ProblemSolutionSection } from "@/components/problem-solution-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { DemoSection } from "@/components/demo-section";
 import { PricingSection } from "@/components/pricing-section";
+
 import FAQSection from "@/components/faq-section";
-import { TrustSection } from "@/components/trust-section";
-import { Footer } from "@/components/footer";
+import TrustSection from "@/components/trust-section";
+import ShowcaseSection from "@/components/feature";
+import Footer from "@/components/footer";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import ShowcaseSection from "@/components/feature";
 
 export default function Home() {
   const wrapper = useRef(null);

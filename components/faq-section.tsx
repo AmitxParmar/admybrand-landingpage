@@ -1,47 +1,18 @@
 "use client";
 
-import { memo, useState } from "react";
+import { memo, useState, useCallback } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
-const faqs = [
-  {
-    question: "Will this replace my marketing team?",
-    answer:
-      "No, ADmyBRAND AI Suite is designed to augment your team's capabilities, not replace them. It handles repetitive tasks and data analysis, freeing your team to focus on strategy, creativity, and relationship building. Think of it as giving your marketers superpowers.",
-  },
-  {
-    question: "Is the AI model actually custom?",
-    answer:
-      "Yes, our AI models are built on advanced foundations like GPT-4 but are fine-tuned specifically for marketing use cases. We continuously train our models on marketing data, campaign performance, and industry best practices to provide insights tailored to your business.",
-  },
-  {
-    question: "What platforms does this integrate with?",
-    answer:
-      "We integrate with all major advertising platforms including Google Ads, Meta (Facebook/Instagram), LinkedIn, TikTok, Twitter, and more. We also connect with CRM systems like HubSpot, Salesforce, and marketing tools like Mailchimp, Klaviyo, and Zapier.",
-  },
-  {
-    question: "How is my data protected?",
-    answer:
-      "We take data security seriously with SOC 2 Type II compliance, end-to-end encryption, and GDPR compliance. Your data is never shared with third parties or used to train models for other customers. We maintain strict access controls and regular security audits.",
-  },
-  {
-    question: "How quickly will I see results?",
-    answer:
-      "Most customers see initial improvements within 7-14 days of setup. Significant results typically appear within 30 days as our AI learns your audience and optimizes campaigns. The more data we have, the better our predictions and optimizations become.",
-  },
-  {
-    question: "Do you offer support during setup?",
-    answer:
-      "All plans include onboarding support. Pro and Enterprise customers get dedicated success managers. We also provide 24/7 chat support with real humans (no bots), comprehensive documentation, and video tutorials.",
-  },
-];
+import { faqs } from "@/lib/constants";
 
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const toggleFAQ = useCallback(
+    (index: number) => {
+      setOpenIndex(openIndex === index ? null : index);
+    },
+    [openIndex]
+  );
 
   return (
     <section className="snap-start border border-y-primary py-24 bg-white dark:bg-black pt-16">

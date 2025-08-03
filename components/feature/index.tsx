@@ -3,6 +3,8 @@ import VerticleSlider from "./VerticleSlider";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
+import { memo } from "react";
+import "./swiper.css";
 
 // Short, punchy feature phrases for the marquee
 const aiMarketingTools = [
@@ -133,4 +135,4 @@ const ShowcaseSection = () => {
   );
 };
 
-export default ShowcaseSection;
+export default memo(ShowcaseSection);
